@@ -42,6 +42,13 @@ def register_service(name, handler):
     '''
     SERVICE_DB[name] = handler
 
+
+def list_services():
+    '''
+    Returns list of available services.
+    '''
+    return SERVICE_DB.keys()
+
 def upload_photos(service, images, debug = False, msgcallback = None):
     '''
     Uploads photos to defined service.

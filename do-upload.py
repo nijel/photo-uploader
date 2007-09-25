@@ -30,8 +30,13 @@ import webbrowser
 import sys
 
 # Parameters processing
+program_name = 'photo-upload %s' % phoupl.__version__
 usage = "usage: %prog [options] images"
-parser = OptionParser(usage=usage)
+parser = OptionParser(usage = usage, version = program_name)
+parser.add_option("", "--license",
+                  action="store_true",
+                  dest="show_license", default=False,
+                  help="Display program license.")
 parser.add_option("-s", "--service",
                   action="store", type="string",
                   dest="service_name", default="droxi.cz",
@@ -54,6 +59,12 @@ parser.add_option("-S", "--session",
                   help="Existing session to reuse (some services won't work without existing session).")
 
 (options, args) = parser.parse_args()
+
+# Informational options
+if options.show_license:
+    print program_name
+    print __license__
+    sys.exit(0)
 
 # List services
 if options.list_services:

@@ -95,7 +95,7 @@ files = len(file_list)
 for i in range(files):
     current = file_list[i]
     base = os.path.basename(current)
-    msg('Uploading [%d/%d]: %20s\r' % (i + 1, files, base), True)
+    msg('Uploading %.01f%% [%d/%d]: %20s\r' % (100.0 * (i + 1) / files, i + 1, files, base), True)
     sys.stdout.flush()
     c.setopt(pycurl.HTTPPOST, [
         ('sessionid',  sessionid), 

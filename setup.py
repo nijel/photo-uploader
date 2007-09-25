@@ -2,8 +2,7 @@
 # -*- coding: UTF-8 -*-
 # vim: expandtab sw=4 ts=4 sts=4:
 '''
-Photo-Uploader for foto.droxy.cz
-Main uploader script.
+Photo uploader, setup script.
 '''
 __author__ = 'Michal Čihař'
 __email__ = 'michal@cihar.com'

@@ -49,11 +49,11 @@ def list_services():
     '''
     return SERVICE_DB.keys()
 
-def upload_photos(service, images, debug = False, msgcallback = None):
+def upload_photos(service, images, debug = False, msgcallback = None, session = None):
     '''
     Uploads photos to defined service.
     '''
-    service = SERVICE_DB[service](debug, msgcallback)
+    service = SERVICE_DB[service](debug, msgcallback, session)
     service.upload(images)
     return service.get_review_url()
 

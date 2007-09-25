@@ -27,29 +27,15 @@ import pycurl
 
 class ILikePhotoService(phoupl.core.PhotoUploader):
     def _connect(self):
-        # Init session...
-        self.msg('Initialising session...')
-        self.get('http://sberna.ilikephoto.cz/')
-        self.cookies = self._curl.getinfo(pycurl.INFO_COOKIELIST)
-        self.sessionid = self.cookies[0].split('\t')[6]
-
-        self.msg('Entering service...')
-        self.post('http://sberna.ilikephoto.cz/',
-                [
-                    ('vstup', 'fotka')
-                ])
-
-        self.msg('Confirming conditions...')
-        self.post('http://sberna.ilikephoto.cz/vstup-do-fotosberny/index.php',
-                [
-                    ('souhlasim', 'ano'), 
-                ])
+        if self._session is None:
+            raise Exception("Need created session, please go to http://sberna.ilikephoto.cz/ and obtain one!")
+        self.msg('Reusing session %s' % self._session)
 
     def _upload(self, image):
         self.post(
-                'http://sberna.ilikephoto.cz/vlozit-fotografie/upload.php?ilikephoto=%s&verze=sberna' % self.sessionid,
+                'http://sberna.ilikephoto.cz/vlozit-fotografie/upload.php?ilikephoto=%s&verze=sberna' % self._session,
                 [
-                    ('sessionid',  self.sessionid), 
+                    ('sessionid',  self._session), 
                     ('f1', (pycurl.FORM_FILE, image)), 
                     ('nf1', ''),
                     ('pokracovat', 'some text')
@@ -61,9 +47,9 @@ You can review them here:
 http://sberna.ilikephoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s
 You can finish order here:
 http://sberna.ilikephoto.cz/termin-zpracovani/?ilikephoto=%s
-''' %(self.sessionid, self.sessionid))
+''' %(self._session, self._session))
 
     def get_review_url(self):
-        return 'http://sberna.ilikephoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self.sessionid
+        return 'http://sberna.ilikephoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self._session
 
 phoupl.register_service('ilikephoto.cz', ILikePhotoService)

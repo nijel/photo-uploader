@@ -27,11 +27,18 @@ import pycurl
 
 class DroxiService(phoupl.core.PhotoUploader):
     def _connect(self):
+        # Use preseeded session
+        if self._session is not None:
+            self.sessionid = self._session
+            self.msg('Reusing session %s' % self.sessionid)
+            return
+
         # Init session...
         self.msg('Initialising session...')
         self.get('http://foto.droxi.cz/')
         self.cookies = self._curl.getinfo(pycurl.INFO_COOKIELIST)
         self.sessionid = self.cookies[0].split('\t')[6]
+        self.msg('Created session %s' % self.sessionid)
 
         # Select photo and not photoalbum...
         self.msg('Selecting photo order...')

@@ -48,6 +48,10 @@ parser.add_option("-d", "--debug",
                   action="store_true",
                   dest="debug", default=False,
                   help="Show debugging output.")
+parser.add_option("-S", "--session",
+                  action="store", type="string",
+                  dest="session", default=None,
+                  help="Existing session to reuse (some services won't work without existing session).")
 
 (options, args) = parser.parse_args()
 
@@ -63,7 +67,9 @@ if len(args) == 0:
     parser.print_help()
     sys.exit("No files to upload.")
 
-url = phoupl.upload_photos(options.service_name, args, debug = options.debug)
+url = phoupl.upload_photos(options.service_name, args, 
+        debug = options.debug, 
+        session = options.session)
 
 if options.open_browser:
     webbrowser.open(url)

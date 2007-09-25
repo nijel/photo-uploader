@@ -54,3 +54,4 @@ def upload_photos(service, images, debug = False, msgcallback = None):
 # We register all services here
 # TODO: This should load dynamically everything from services
 import services.droxi
+import services.ilikephoto

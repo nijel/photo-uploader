@@ -1,0 +1,23 @@
+Photo uploader
+==============
+
+This is simple photo uploader for minilabs. Basic usage is described by
+online help, just issue do-upload.py --help.
+
+
+Supported services overview
+===========================
+
+New - you can create new order
+Reuse - you can upload photos to existing order (using --session)
+
+Service       | URL                          | New    | Reuse  
+--------------|------------------------------|--------|-------
+droxi.cz      | http://foto.droxi.cz/        | Yes    |  Yes
+ilikephoto.cz | http://sberna.ilikephoto.cz/ | Yes[1] |  Yes
+
+[1]: You need to manually inject cookie to browser after creating
+session.
+
+
+# vim: et ts=4 sw=4 sts=4 tw=72 spell spelllang=en_us

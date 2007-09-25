@@ -20,4 +20,13 @@ ilikephoto.cz | http://sberna.ilikephoto.cz/ | Yes[1] |  Yes
 session.
 
 
+Adding new service
+==================
+
+To add support for your service, you need to subclass from
+phoupl.core.PhotoUploader and implement _connect and _upload methods.
+You also need to register new service using
+phoupl.register_service('service_name', ServiceClass). Then place your
+module int phoupl/services directory and it should work :-).
+
 # vim: et ts=4 sw=4 sts=4 tw=72 spell spelllang=en_us

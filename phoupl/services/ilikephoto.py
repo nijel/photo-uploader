@@ -6,7 +6,7 @@ Photo-Uploader wrapper for ilikePhoto service.
 __author__ = 'Michal Čihař'
 __email__ = 'michal@cihar.com'
 __license__ = '''
-Copyright (c) 2003 - 2007 Michal Čihař
+Copyright © 2007 Michal Čihař
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License version 2 as published by
@@ -73,4 +73,5 @@ If you started new session, you need to inject cookie ilikephoto with value
     def get_review_url(self):
         return 'http://sberna.ilikephoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self._session
 
+# Register service
 phoupl.register_service('ilikephoto.cz', ILikePhotoService)

@@ -60,7 +60,7 @@ class ILikePhotoService(phoupl.core.PhotoUploader):
 You can review them here:
 http://sberna.ilikephoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s
 You can finish order here:
-http://foto.droxi.cz/termin-zpracovani/?ilikephoto=%s
+http://sberna.ilikephoto.cz/termin-zpracovani/?ilikephoto=%s
 ''' %(self.sessionid, self.sessionid))
 
     def get_review_url(self):

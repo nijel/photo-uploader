@@ -57,8 +57,16 @@ def upload_photos(service, images, debug = False, msgcallback = None, session = 
     service.upload(images)
     return service.get_review_url()
 
+import os
+
+SERVICES_DIR = './services'
+SERVICES_ABS_DIR = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__), 
+            SERVICES_DIR))
 
 # We register all services here
-# TODO: This should load dynamically everything from services
-import services.droxi
-import services.ilikephoto
+for filename in os.listdir(SERVICES_ABS_DIR):
+    module_name, ext = os.path.splitext(filename)
+    if ext == '.py' and module_name != '__init__':
+        __import__('phoupl.services.%s' % module_name)

@@ -77,7 +77,7 @@ class PhotoUploader:
             sys.stderr.write(80 * '-')
             sys.stderr.write('\n%d: %s\n' % (
                 self._curl.getinfo(pycurl.HTTP_CODE), 
-                self._buffer.getinfo(pycurl.EFFECTIVE_URL)
+                self._curl.getinfo(pycurl.EFFECTIVE_URL)
                 ))
             sys.stderr.write(self._buffer.getvalue())
             sys.stderr.write('\n')

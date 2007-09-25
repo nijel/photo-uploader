@@ -53,8 +53,11 @@ def msg(s, noeol = False):
 
 c = pycurl.Curl()
 b = StringIO.StringIO()
+# Write output to string buffer
 c.setopt(pycurl.WRITEFUNCTION, b.write)
+# We need to follow redirects
 c.setopt(pycurl.FOLLOWLOCATION, 1)
+# We need cookies support, but we don't have to store them
 c.setopt(pycurl.COOKIEFILE, "")
 
 # Init session...

@@ -152,7 +152,7 @@ class PhotoUploader:
             current = images[i]
             base = os.path.basename(current)
             percent = 100.0 * (i + 1) / count
-            self.msg('Uploading %.01f%% [%d/%d]: %20s\r' % 
+            self.msg('Uploading %5.01f%% [%d/%d]: %20s\r' % 
                     (
                         percent,
                         i + 1, 

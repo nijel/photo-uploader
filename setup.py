@@ -32,6 +32,12 @@ import sys
 import phoupl
 from stat import ST_MODE
 
+try:
+    import pycurl
+except ImportError:
+    print 'You need PycURL for Photo-Uploader, download it from <http://pycurl.sourceforge.net/>'
+    sys.exit(1)
+
 # check if Python is called on the first line with this expression
 first_line_re = re.compile('^#!.*python[0-9.]*([ \t].*)?$')
 

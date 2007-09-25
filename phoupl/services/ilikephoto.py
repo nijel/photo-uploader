@@ -27,9 +27,27 @@ import pycurl
 
 class ILikePhotoService(phoupl.core.PhotoUploader):
     def _connect(self):
-        if self._session is None:
-            raise Exception("Need created session, please go to http://sberna.ilikephoto.cz/ and obtain one!")
-        self.msg('Reusing session %s' % self._session)
+        if self._session is not None:
+            self.msg('Reusing session %s' % self._session)
+
+        # Init session...
+        self.msg('Initialising session...')
+        self.get('http://sberna.ilikephoto.cz/')
+        self.cookies = self._curl.getinfo(pycurl.INFO_COOKIELIST)
+        self._session = self.cookies[0].split('\t')[6]
+        self.msg('Created session %s' % self._session)
+
+        self.msg('Entering service...')
+        self.post('http://sberna.ilikephoto.cz/',
+                [
+                    ('vstup', 'fotka')
+                ])
+
+        self.msg('Confirming conditions...')
+        self.post('http://sberna.ilikephoto.cz/vstup-do-fotosberny/index.php',
+                [
+                    ('souhlasim', 'ano'), 
+                ])
 
     def _upload(self, image):
         self.post(
@@ -47,7 +65,10 @@ You can review them here:
 http://sberna.ilikephoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s
 You can finish order here:
 http://sberna.ilikephoto.cz/termin-zpracovani/?ilikephoto=%s
-''' %(self._session, self._session))
+
+If you started new session, you need to inject cookie ilikephoto with value 
+%s to your browser for sberna.ilikephoto.cz domain.
+''' %(self._session, self._session, self._session))
 
     def get_review_url(self):
         return 'http://sberna.ilikephoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self._session

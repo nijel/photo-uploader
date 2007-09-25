@@ -35,7 +35,10 @@ debug = False
 def dumpRequest(c, b):
     if debug:
         sys.stderr.write(80 * '-')
-        sys.stderr.write('\n%d: %s\n' % (c.getinfo(pycurl.HTTP_CODE), c.getinfo(pycurl.EFFECTIVE_URL)))
+        sys.stderr.write('\n%d: %s\n' % (
+            c.getinfo(pycurl.HTTP_CODE), 
+            c.getinfo(pycurl.EFFECTIVE_URL)
+            ))
         sys.stderr.write(b.getvalue())
         sys.stderr.write('\n')
 
@@ -66,7 +69,10 @@ sessionid = cookies[0].split('\t')[6]
 # Select photo and not photoalbum...
 msg('Selecting photo order...')
 c.setopt(pycurl.URL, 'http://foto.droxi.cz/index.php')
-c.setopt(pycurl.HTTPPOST, [('scripttest', '0'), ('vyber', 'fotka')])
+c.setopt(pycurl.HTTPPOST, [
+    ('scripttest', '0'), 
+    ('vyber', 'fotka')
+    ])
 c.perform()
 dumpRequest(c, b)
 b.truncate(0)

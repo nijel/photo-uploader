@@ -26,7 +26,6 @@ this program; if not, write to the Free Software Foundation, Inc.,
 
 import pycurl
 import StringIO
-import urllib
 import os
 import sys
 import webbrowser

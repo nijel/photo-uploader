@@ -74,7 +74,11 @@ b.truncate(0)
 # Select fast/cheaper/simple order...
 msg('Selecting fast/cheaper/simple order...')
 c.setopt(pycurl.URL, 'http://foto.droxi.cz/typ-zakazky/index.php')
-c.setopt(pycurl.HTTPPOST, [('krok_zpet', '4'), ('set_ordertype', 'disc'), ('pokracovat', 'some text')])
+c.setopt(pycurl.HTTPPOST, [
+    ('krok_zpet', '4'), 
+    ('set_ordertype', 'disc'), 
+    ('pokracovat', 'some text')
+    ])
 c.perform()
 dumpRequest(c, b)
 b.truncate(0)

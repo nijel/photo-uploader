@@ -29,6 +29,7 @@ import StringIO
 import urllib
 import os
 import sys
+import webbrowser
 
 debug = False
 
@@ -113,3 +114,5 @@ msg('You can review them here:')
 msg('http://foto.droxi.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % sessionid)
 msg('You can finish order here:')
 msg('http://foto.droxi.cz/format-fotografii/?ilikephoto=%s' % sessionid)
+msg('Opening review URL in browser...')
+webbrowser.open('http://foto.droxi.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % sessionid)

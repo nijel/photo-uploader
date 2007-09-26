@@ -42,6 +42,23 @@ Show debugging output. This includes HTML files received from service.
 Existing session to reuse (some services won't work
 without existing session).
 
+.SH EXAMPLES
+
+.TP
+Uploading all photos from /folder to default service and opening web browser to finish order:
+
+photo-upload \-b /folder/*.jpg
+
+.TP
+Adding one image to existiong session on ilikephoto.cz service:
+
+photo-upload \-s ilikephoto.cz \-S f1721a19cc3c95218525a8429d48dab2 /tmp/Obraz024.jpg
+
+.TP
+Listing currently supported services:
+
+photo-upload \-l
+
 .SH LICENCE
 This program is licensed under GNU/GPL version 2.
 
@@ -58,4 +75,4 @@ More information is available on program website:
 Michal Cihar <\fImichal@cihar.com\fR>
 
 .SH COPYRIGHT
-Copyright \(co 2007 Michal Cihar <michal@cihar.com>
+Copyright \(co 2007 Michal Cihar <\fImichal@cihar.com\fR>

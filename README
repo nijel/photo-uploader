@@ -24,8 +24,22 @@ Adding new service
 
 To add support for your service, you need to subclass from
 phoupl.core.PhotoUploader and implement _connect and _upload methods.
-You also need to register new service using
-phoupl.register_service('service_name', ServiceClass). Then place your
-module int phoupl/services directory and it should work :-).
+You also need to register new service using phoupl.register_service.
+Then place your module int phoupl/services directory and it should work
+:-).
+
+
+Using in applications
+=====================
+
+If you want to use photo-uploader in your applications, please be
+careful, because it is in very early stage of development and almost
+everything can change.
+
+If you want to parse photo-upload -l output, you can rely it will be
+always formatted like Debian control files (see Debian Policy Manual at
+<http://www.debian.org/doc/debian-policy/ch-controlfields.html> for
+detailed description). Name field is required all others are basically
+optional and new fields can be added by later versions.
 
 # vim: et ts=4 sw=4 sts=4 tw=72 spell spelllang=en_us

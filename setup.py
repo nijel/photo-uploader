@@ -151,6 +151,9 @@ setup(name = 'photo-uploader',
     ],
     packages = ['phoupl', 'phoupl.services'],
     scripts = ['photo-upload.py'],
+    data_files = [
+        (os.path.join('share','man','man1'), ['photo-upload.1'])
+        ],
     # Override certain command classes with our own ones
     cmdclass = {
         'build_scripts': build_scripts_phoupl,

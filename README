@@ -17,6 +17,7 @@ Reuse - you can upload photos to existing order (using --session)
 Service       | URL                          | New    | Reuse  
 --------------|------------------------------|--------|-------
 droxi.cz      | http://foto.droxi.cz/        | Yes    |  Yes
+fotostar.cz   | http://sberna.fotostar.cz/   | Yes    |  Yes
 ilikephoto.cz | http://sberna.ilikephoto.cz/ | Yes[1] |  Yes
 
 [1]: You need to manually inject cookie to browser after creating

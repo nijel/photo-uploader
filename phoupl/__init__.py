@@ -23,9 +23,6 @@ this program; if not, write to the Free Software Foundation, Inc.,
 '''
 
 __version__ = '0.2'
-__all__ = [
-        'core',
-        ]
 
 # Import main module
 import core
@@ -36,11 +33,15 @@ Dictionary holding all available services.
 '''
 SERVICE_DB = {}
 
-def register_service(name, handler):
+def register_service(name, handler, url, features):
     '''
     Registration handler for adding service.
     '''
-    SERVICE_DB[name] = handler
+    SERVICE_DB[name] = {
+            'Class': handler,
+            'URL': url,
+            'Features': features,
+            }
 
 
 def list_services():
@@ -49,11 +50,20 @@ def list_services():
     '''
     return SERVICE_DB.keys()
 
+def get_service_info(name):
+    '''
+    Returns information about service.
+    '''
+    return {
+            'URL' : SERVICE_DB[name]['URL'],
+            'Features' : SERVICE_DB[name]['Features'],
+            }
+
 def upload_photos(service, images, debug = False, msgcallback = None, session = None):
     '''
     Uploads photos to defined service.
     '''
-    service = SERVICE_DB[service](debug, msgcallback, session)
+    service = SERVICE_DB[service]['Class'](debug, msgcallback, session)
     service.upload(images)
     return service.get_review_url()
 

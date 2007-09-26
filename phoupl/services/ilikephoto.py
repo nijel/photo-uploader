@@ -74,4 +74,9 @@ If you started new session, you need to inject cookie ilikephoto with value
         return 'http://sberna.ilikephoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self._session
 
 # Register service
-phoupl.register_service('ilikephoto.cz', ILikePhotoService)
+phoupl.register_service(
+        'ilikephoto.cz', 
+        ILikePhotoService, 
+        'http://sberna.ilikephoto.cz/', 
+        ['new', 'reuse', 'cookie']
+        )

@@ -8,21 +8,15 @@ To upload photo to some service, just invoke something like this:
 photo-upload -s service_name image1.jpg /folder/with/images/*.jpg
 
 
-Supported services overview
-===========================
+Supported service features
+==========================
 
-New - you can create new order
-Reuse - you can upload photos to existing order (using --session)
+You can get list of services by photo-upload -l.
 
-Service             | URL                                          | New    | Reuse  
---------------------|----------------------------------------------|--------|-------
-droxi.cz            | http://foto.droxi.cz/                        | Yes    |  Yes
-fotostar.cz         | http://sberna.fotostar.cz/                   | Yes    |  Yes
-dm-drogeriemarkt.cz | http://www.dm-drogeriemarkt.cz/fotoparadies/ | Yes    |  Yes
-ilikephoto.cz       | http://sberna.ilikephoto.cz/                 | Yes[1] |  Yes
-
-[1]: You need to manually inject cookie to browser after creating
-session.
+Description of features:
+    - new - supports creating of new session
+    - reuse - supports reusing of existing session
+    - cookies - requires cookie injection to browser on new session
 
 
 Adding new service

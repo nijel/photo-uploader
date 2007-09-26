@@ -78,4 +78,9 @@ http://foto.droxi.cz/format-fotografii/?ilikephoto=%s
         return 'http://foto.droxi.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self._session
 
 # Register service
-phoupl.register_service('droxi.cz', DroxiService)
+phoupl.register_service(
+        'droxi.cz', 
+        DroxiService,
+        'http://foto.droxi.cz/',
+        ['new', 'reuse']
+        )

@@ -70,4 +70,9 @@ http://sberna.fotostar.cz/format-fotografii/?ilikephoto=%s
         return 'http://sberna.fotostar.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self._session
 
 # Register service
-phoupl.register_service('fotostar.cz', FotostarService)
+phoupl.register_service(
+        'fotostar.cz', 
+        FotostarService,
+        'http://sberna.fotostar.cz/',
+        ['new', 'reuse']
+        )

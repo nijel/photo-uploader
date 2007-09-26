@@ -170,3 +170,19 @@ class PhotoUploader:
         this in subclass.
         '''
         raise NotImplemented()
+
+    def get_url():
+        '''
+        Returns URL with information about service. You should implement
+        this in subclass.
+        '''
+        raise NotImplemented()
+
+    def get_features():
+        '''
+        Returns list of supported features. You should implement
+        this in subclass.
+
+        Features are described in README.
+        '''
+        return []

@@ -70,4 +70,9 @@ http://sberna7.ifoto.cz/format-fotografii/?ilikephoto=%s
         return 'http://sberna7.ifoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self._session
 
 # Register service
-phoupl.register_service('dm-drogeriemarkt.cz', DMParadiesService)
+phoupl.register_service(
+        'dm-drogeriemarkt.cz', 
+        DMParadiesService,
+        'http://www.dm-drogeriemarkt.cz/fotoparadies/',
+        ['new', 'reuse']
+        )

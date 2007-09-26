@@ -67,9 +67,12 @@ if options.show_license:
 
 # List services
 if options.list_services:
-    print 'Available services:'
-    for x in phoupl.list_services():
-        print ' %s' % x
+    for service in phoupl.list_services():
+        print 'Name: %s' % service
+        info = phoupl.get_service_info(service)
+        print 'URL: %s' % info['URL']
+        print 'Features: %s' % ', '.join(info['Features'])
+        print
     sys.exit(0)
 
 # Check for some files to upload

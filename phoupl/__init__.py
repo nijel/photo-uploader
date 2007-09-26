@@ -26,6 +26,7 @@ __version__ = '0.2'
 
 # Import main module
 import core
+import copy
 
 
 '''
@@ -33,16 +34,52 @@ Dictionary holding all available services.
 '''
 SERVICE_DB = {}
 
-def register_service(name, handler, url, features):
+def register_service(name, 
+        handler, 
+        url = '',
+        features = [],
+        fullname = None,
+        countries = None,
+        languages = None
+        ):
     '''
     Registration handler for adding service.
+
+    Parameters handler, url and features should be allways filled, rest
+    is optional.
+
+    @param handler: Class to handle uploads.
+    @type handler: Class
+
+    @param url: URL with service information.
+    @type URL: string
+
+    @param features: Features supported by service, check README for
+    their listing.
+    @type features: list of strings
+
+    @param fullname: Printable name of service.
+    @type fullname: string
+
+    @param countries: List of countries where service is available as
+    ISO 3166 codes.
+    @type countries: list of strings
+
+    @param languages: List od languages as ISO 639-2 language codes
+    supported by service.
+    @type languages: list of strings
     '''
     SERVICE_DB[name] = {
             'Class': handler,
             'URL': url,
             'Features': features,
             }
-
+    if fullname is not None:
+        SERVICE_DB[name]['FullName'] = fullname
+    if countries is not None:
+        SERVICE_DB[name]['Countries'] = countries
+    if languages is not None:
+        SERVICE_DB[name]['Languages'] = languages
 
 def list_services():
     '''
@@ -54,10 +91,9 @@ def get_service_info(name):
     '''
     Returns information about service.
     '''
-    return {
-            'URL' : SERVICE_DB[name]['URL'],
-            'Features' : SERVICE_DB[name]['Features'],
-            }
+    result = copy.deepcopy(SERVICE_DB[name])
+    del result['Class']
+    return result
 
 def upload_photos(service, images, debug = False, msgcallback = None, session = None):
     '''

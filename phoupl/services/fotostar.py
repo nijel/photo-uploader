@@ -74,5 +74,8 @@ phoupl.register_service(
         'fotostar.cz', 
         FotostarService,
         'http://sberna.fotostar.cz/',
-        ['new', 'reuse']
+        ['new', 'reuse'],
+        'FotoStar',
+        ['cz'],
+        ['cze']
         )

@@ -65,13 +65,29 @@ if options.show_license:
     print __license__
     sys.exit(0)
 
+def print_str(info, name):
+    try:
+        print '%s: %s' % (name, info[name])
+    except KeyError:
+        pass
+
+def print_list(info, name):
+    try:
+        print '%s: %s' % (name, ', '.join(info[name]))
+    except KeyError:
+        pass
+
+
 # List services
 if options.list_services:
     for service in phoupl.list_services():
         print 'Name: %s' % service
         info = phoupl.get_service_info(service)
-        print 'URL: %s' % info['URL']
-        print 'Features: %s' % ', '.join(info['Features'])
+        print_str(info, 'FullName')
+        print_str(info, 'URL')
+        print_list(info, 'Features')
+        print_list(info, 'Languages')
+        print_list(info, 'Countries')
         print
     sys.exit(0)
 

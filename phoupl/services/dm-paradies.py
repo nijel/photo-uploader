@@ -74,5 +74,8 @@ phoupl.register_service(
         'dm-drogeriemarkt.cz', 
         DMParadiesService,
         'http://www.dm-drogeriemarkt.cz/fotoparadies/',
-        ['new', 'reuse']
+        ['new', 'reuse'],
+        'dm paradies foto (cz)',
+        ['cz'],
+        ['cze']
         )

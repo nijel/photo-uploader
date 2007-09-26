@@ -2,10 +2,10 @@ Photo uploader
 ==============
 
 This is simple photo uploader for minilabs. Basic usage is described by
-online help, just issue photo-upload.py --help.
+online help, just issue photo-upload --help.
 
 To upload photo to some service, just invoke something like this:
-photo-upload.py -s service_name image1.jpg /folder/with/images/*.jpg
+photo-upload -s service_name image1.jpg /folder/with/images/*.jpg
 
 
 Supported services overview

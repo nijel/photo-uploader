@@ -58,7 +58,8 @@ def register_service(name,
     their listing.
     @type features: list of strings
 
-    @param fullname: Printable name of service.
+    @param fullname: Printable name of service. This should be unique
+    among all services in one country.
     @type fullname: string
 
     @param countries: List of countries where service is available as

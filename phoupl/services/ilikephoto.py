@@ -79,7 +79,7 @@ phoupl.register_service(
         ILikePhotoService, 
         'http://sberna.ilikephoto.cz/', 
         ['new', 'reuse', 'cookie'],
-        'ilikePHOTO.cz',
+        'ilikePHOTO',
         ['cz'],
         ['cze']
         )

@@ -83,7 +83,7 @@ phoupl.register_service(
         DroxiService,
         'http://foto.droxi.cz/',
         ['new', 'reuse'],
-        'Droxi.cz',
+        'Droxi',
         ['cz'],
         ['cze']
         )

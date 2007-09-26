@@ -26,6 +26,8 @@ __version__ = '0.2'
 
 # Import main module
 import core
+
+# Import other required modules
 import copy
 
 

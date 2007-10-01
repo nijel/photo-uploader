@@ -70,6 +70,15 @@ class PhotoUploader:
                 print s
             sys.stdout.flush()
 
+    def get_session(self):
+        '''
+        Returns currently used session.
+        '''
+        if self._session is None:
+            raise ValueError('Session not known!')
+
+        return self._session
+
     def dump_request(self):
         '''
         Dumps request data if debug is enabled.

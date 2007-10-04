@@ -98,7 +98,8 @@ def get_service_info(name):
     del result['Class']
     return result
 
-def upload_photos(service, images, debug = False, msgcallback = None, session = None):
+def upload_photos(service, images, debug = False, 
+        msgcallback = None, session = None):
     '''
     Uploads photos to defined service.
     '''

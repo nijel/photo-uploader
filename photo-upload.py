@@ -28,58 +28,71 @@ import phoupl
 import webbrowser
 import sys
 
-# Parameters processing
-program_name = 'photo-upload %s' % phoupl.__version__
-usage = "usage: %prog [options] images"
-parser = OptionParser(usage = usage, version = program_name)
-parser.add_option("", "--license",
-                  action="store_true",
-                  dest="show_license", default=False,
-                  help="Display program license.")
-parser.add_option("-s", "--service",
-                  action="store", type="string",
-                  dest="service_name", default="droxi.cz",
-                  help="Name of service to use.")
-parser.add_option("-l", "--list-services",
-                  action="store_true",
-                  dest="list_services", default=False,
-                  help="List available services.")
-parser.add_option("-b", "--open-browser",
-                  action="store_true",
-                  dest="open_browser", default=False,
-                  help="Open order in browser after uploading.")
-parser.add_option("-d", "--debug",
-                  action="store_true",
-                  dest="debug", default=False,
-                  help="Show debugging output.")
-parser.add_option("-S", "--session",
-                  action="store", type="string",
-                  dest="session", default=None,
-                  help="Existing session to reuse (some services won't work without existing session).")
+def commandline():
+    '''
+    Parameters processing.
+    '''
+    program_name = 'photo-upload %s' % phoupl.__version__
+    usage = "usage: %prog [options] images"
+    parser = OptionParser(usage = usage, version = program_name)
+    parser.add_option("", "--license",
+                      action="store_true",
+                      dest="show_license", default=False,
+                      help="Display program license.")
+    parser.add_option("-s", "--service",
+                      action="store", type="string",
+                      dest="service_name", default="droxi.cz",
+                      help="Name of service to use.")
+    parser.add_option("-l", "--list-services",
+                      action="store_true",
+                      dest="list_services", default=False,
+                      help="List available services.")
+    parser.add_option("-b", "--open-browser",
+                      action="store_true",
+                      dest="open_browser", default=False,
+                      help="Open order in browser after uploading.")
+    parser.add_option("-d", "--debug",
+                      action="store_true",
+                      dest="debug", default=False,
+                      help="Show debugging output.")
+    parser.add_option("-S", "--session",
+                      action="store", type="string",
+                      dest="session", default=None,
+                      help="Existing session to reuse "+ 
+                      "(some services won't work without existing session).")
 
-(options, args) = parser.parse_args()
+    (options, args) = parser.parse_args()
 
-# Informational options
-if options.show_license:
-    print program_name
-    print __license__
-    sys.exit(0)
+    # Informational options
+    if options.show_license:
+        print program_name
+        print __license__
+        sys.exit(0)
+
+    return (options, args, parser)
 
 def print_str(info, name):
+    '''
+    Prints single string value.
+    '''
     try:
         print '%s: %s' % (name, info[name])
     except KeyError:
         pass
 
 def print_list(info, name):
+    '''
+    Prints list value.
+    '''
     try:
         print '%s: %s' % (name, ', '.join(info[name]))
     except KeyError:
         pass
 
-
-# List services
-if options.list_services:
+def list_services():
+    '''
+    List available services.
+    '''
     for service in phoupl.list_services():
         print 'Name: %s' % service
         info = phoupl.get_service_info(service)
@@ -89,16 +102,30 @@ if options.list_services:
         print_list(info, 'Languages')
         print_list(info, 'Countries')
         print
-    sys.exit(0)
 
-# Check for some files to upload
-if len(args) == 0:
-    parser.print_help()
-    sys.exit("No files to upload.")
+def main():
+    '''
+    Main script.
+    '''
+    (options, args, parser) = commandline()
 
-url = phoupl.upload_photos(options.service_name, args, 
-        debug = options.debug, 
-        session = options.session)
+    # List services
+    if options.list_services:
+        list_services()
+        sys.exit(0)
 
-if options.open_browser:
-    webbrowser.open(url)
+    # Check for some files to upload
+    if len(args) == 0:
+        parser.print_help()
+        sys.exit("No files to upload.")
+
+    url = phoupl.upload_photos(options.service_name, args, 
+            debug = options.debug, 
+            session = options.session)
+
+    if options.open_browser:
+        webbrowser.open(url)
+
+
+if __name__ == '__main__':
+    main()

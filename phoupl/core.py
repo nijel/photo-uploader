@@ -30,7 +30,10 @@ import os
 import pycurl
 import StringIO
 
-class NotImplemented(Exception):
+class PhoUplNotImplemented(Exception):
+    '''
+    Raised when some functionality not implemented by plugin.
+    '''
     pass
 
 class PhotoUploader:
@@ -57,17 +60,17 @@ class PhotoUploader:
         # We need cookies support, but we don't have to store them
         self._curl.setopt(pycurl.COOKIEFILE, "")
 
-    def msg(self, s, noeol = False):
+    def msg(self, text, noeol = False):
         '''
         Prints message to user.
         '''
         if self._msgcallback is not None:
-            self._msgcallback(s, noeol)
+            self._msgcallback(text, noeol)
         else:
             if noeol:
-                print s,
+                print text,
             else:
-                print s
+                print text
             sys.stdout.flush()
 
     def get_session(self):
@@ -128,7 +131,7 @@ class PhotoUploader:
         Actually connect to photo service. You should implement this in
         subclass.
         '''
-        raise NotImplemented()
+        raise PhoUplNotImplemented()
 
     def connect(self):
         '''
@@ -142,7 +145,7 @@ class PhotoUploader:
         Uploads single image to photo service. You should implement this in
         subclass.
         '''
-        raise NotImplemented()
+        raise PhoUplNotImplemented()
     
     def _post_upload(self):
         '''
@@ -170,7 +173,7 @@ class PhotoUploader:
                     ), 
                     True)
             self._upload(current)
-        self.msg('Uploaded all %d photos                                  ' % count)
+        self.msg(('Uploaded all %d photos' % count) + 20 * ' ')
         self._post_upload()
 
     def get_review_url(self):
@@ -178,16 +181,16 @@ class PhotoUploader:
         Returns URL suitable for review/finishing order. You should implement
         this in subclass.
         '''
-        raise NotImplemented()
+        raise PhoUplNotImplemented()
 
-    def get_url():
+    def get_url(self):
         '''
         Returns URL with information about service. You should implement
         this in subclass.
         '''
-        raise NotImplemented()
+        raise PhoUplNotImplemented()
 
-    def get_features():
+    def get_features(self):
         '''
         Returns list of supported features. You should implement
         this in subclass.

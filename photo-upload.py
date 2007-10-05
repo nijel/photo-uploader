@@ -27,6 +27,7 @@ from optparse import OptionParser
 import phoupl
 import webbrowser
 import sys
+import os
 
 def commandline():
     '''
@@ -51,6 +52,10 @@ def commandline():
                       action="store_true",
                       dest="open_browser", default=False,
                       help="Open order in browser after uploading.")
+    parser.add_option("-B", "--use-browser",
+                      action="store",
+                      dest="use_browser", default=None,
+                      help="Define browser to use when opening web page. Default is autodetected by python webbrowser.")
     parser.add_option("-d", "--debug",
                       action="store_true",
                       dest="debug", default=False,
@@ -58,7 +63,7 @@ def commandline():
     parser.add_option("-S", "--session",
                       action="store", type="string",
                       dest="session", default=None,
-                      help="Existing session to reuse "+ 
+                      help="Existing session to reuse "+
                       "(some services won't work without existing session).")
 
     (options, args) = parser.parse_args()
@@ -119,12 +124,15 @@ def main():
         parser.print_help()
         sys.exit("No files to upload.")
 
-    url = phoupl.upload_photos(options.service_name, args, 
-            debug = options.debug, 
+    url = phoupl.upload_photos(options.service_name, args,
+            debug = options.debug,
             session = options.session)
 
     if options.open_browser:
-        webbrowser.open(url)
+        if options.use_browser is not None:
+            os.system('%s \'%s\' &' % (options.use_browser, url))
+        else:
+            webbrowser.open(url)
 
 
 if __name__ == '__main__':

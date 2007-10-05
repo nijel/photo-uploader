@@ -35,6 +35,11 @@ List available services.
 \fB\-b\fR, \fB\-\-open\-browser\fR
 Open order in browser after uploading.
 .TP
+\fB\-B\fR, \fB\-\-use\-browser\fR
+Define browser to use when opening web page. Default is autodetected by python
+webbrowser. You can also specify any parameter to browser, the URL will be
+just appended to string you enter here and passed to shell.
+.TP
 \fB\-d\fR, \fB\-\-debug\fR
 Show debugging output. This includes HTML files received from service.
 .TP
@@ -58,6 +63,11 @@ photo-upload \-s ilikephoto.cz \-S f1721a19cc3c95218525a8429d48dab2 /tmp/Obraz02
 Listing currently supported services:
 
 photo-upload \-l
+
+.TP
+Uploading photo and opening epiphany to finish order:
+
+photo-upload \-b \-B epiphany image.jpg
 
 .SH LICENCE
 This program is licensed under GNU/GPL version 2.

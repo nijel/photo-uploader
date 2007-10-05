@@ -8,6 +8,7 @@ two versions can be retrieved from Subversion.
 === (2007-??-??)
 
 * It is possible to get session ID from API.
+* Added support for opening in user defined browser.
 
 0.2
 === (2007-10-01)

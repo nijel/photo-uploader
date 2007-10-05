@@ -40,7 +40,8 @@ class PhotoUploader:
     '''
     Generic photo uploader class for handling photo uploads.
     '''
-    def __init__(self, debug = False, msgcallback = None, session = None):
+    def __init__(self, debug = False, msgcallback = None, session = None,
+            config = None):
         '''
         Creates PhotoUploader object.
         '''
@@ -49,6 +50,7 @@ class PhotoUploader:
         self._msgcallback = msgcallback
         self._connected = False
         self._session = session
+        self._config = config
 
         # Curl backend
         self._curl = pycurl.Curl()

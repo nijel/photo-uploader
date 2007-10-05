@@ -36,8 +36,8 @@ Dictionary holding all available services.
 '''
 SERVICE_DB = {}
 
-def register_service(name, 
-        handler, 
+def register_service(name,
+        handler,
         url = '',
         features = [],
         fullname = None,
@@ -98,12 +98,12 @@ def get_service_info(name):
     del result['Class']
     return result
 
-def upload_photos(service, images, debug = False, 
-        msgcallback = None, session = None):
+def upload_photos(service, images, debug = False,
+        msgcallback = None, session = None, config = None):
     '''
     Uploads photos to defined service.
     '''
-    service = SERVICE_DB[service]['Class'](debug, msgcallback, session)
+    service = SERVICE_DB[service]['Class'](debug, msgcallback, session, config)
     service.upload(images)
     return service.get_review_url()
 
@@ -112,7 +112,7 @@ import os
 SERVICES_DIR = './services'
 SERVICES_ABS_DIR = os.path.abspath(
         os.path.join(
-            os.path.dirname(__file__), 
+            os.path.dirname(__file__),
             SERVICES_DIR))
 
 # We register all services here

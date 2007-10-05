@@ -28,11 +28,17 @@ import phoupl
 import webbrowser
 import sys
 import os
+import ConfigParser
 
-def commandline():
+CONFIGFILE = '~/.photo-upload'
+
+def configure():
     '''
-    Parameters processing.
+    Parameters and config file processing.
     '''
+    config = ConfigParser.ConfigParser()
+    config.read(os.path.expanduser(CONFIGFILE))
+
     program_name = 'photo-upload %s' % phoupl.__version__
     usage = "usage: %prog [options] images"
     parser = OptionParser(usage = usage, version = program_name)
@@ -74,7 +80,7 @@ def commandline():
         print __license__
         sys.exit(0)
 
-    return (options, args, parser)
+    return (options, args, parser, config)
 
 def print_str(info, name):
     '''
@@ -112,7 +118,7 @@ def main():
     '''
     Main script.
     '''
-    (options, args, parser) = commandline()
+    (options, args, parser, config) = configure()
 
     # List services
     if options.list_services:
@@ -126,7 +132,8 @@ def main():
 
     url = phoupl.upload_photos(options.service_name, args,
             debug = options.debug,
-            session = options.session)
+            session = options.session,
+            config = config)
 
     if options.open_browser:
         if options.use_browser is not None:

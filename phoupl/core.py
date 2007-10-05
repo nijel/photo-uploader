@@ -117,13 +117,15 @@ class PhotoUploader:
         # Do the actual request
         self.do_request()
 
-    def post(self, url, params = []):
+    def post(self, url, params = None):
         '''
         Performs POST request on URL with parameters.
         '''
         # Set URL to fetch
         self._curl.setopt(pycurl.URL, url)
         # Set POST content
+        if params is None:
+            params = []
         self._curl.setopt(pycurl.HTTPPOST, params)
         # Do the actual request
         self.do_request()

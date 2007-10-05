@@ -89,7 +89,7 @@ class PhotoUploader:
         if self._debug:
             sys.stderr.write(80 * '-')
             sys.stderr.write('\n%d: %s\n' % (
-                self._curl.getinfo(pycurl.HTTP_CODE), 
+                self._curl.getinfo(pycurl.HTTP_CODE),
                 self._curl.getinfo(pycurl.EFFECTIVE_URL)
                 ))
             sys.stderr.write(self._buffer.getvalue())
@@ -146,13 +146,13 @@ class PhotoUploader:
         subclass.
         '''
         raise PhoUplNotImplemented()
-    
+
     def _post_upload(self):
         '''
         Executed after uploading images, use this for hooking up in subclass.
         '''
         return
-    
+
     def upload(self, images):
         '''
         Upload images listed in images parameter. List should contain paths to
@@ -164,16 +164,16 @@ class PhotoUploader:
             current = images[i]
             base = os.path.basename(current)
             percent = 100.0 * (i + 1) / count
-            self.msg('Uploading %5.01f%% [%d/%d]: %20s\r' % 
+            self.msg('Uploading %5.01f%% [%d/%d]: %20s\r' %
                     (
                         percent,
-                        i + 1, 
-                        count, 
+                        i + 1,
+                        count,
                         base
-                    ), 
+                    ),
                     True)
             self._upload(current)
-        self.msg(('Uploaded all %d photos' % count) + 20 * ' ')
+        self.msg(('Uploaded all %d photos' % count) + 40 * ' ')
         self._post_upload()
 
     def get_review_url(self):

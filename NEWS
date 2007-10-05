@@ -10,6 +10,7 @@ two versions can be retrieved from Subversion.
 * It is possible to get session ID from API.
 * Added support for opening in user defined browser.
 * Now parses ~/.photo-upload and uses it as defaults.
+* Support for uploading to imageshack.us.
 
 0.2
 === (2007-10-01)

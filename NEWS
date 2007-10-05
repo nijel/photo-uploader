@@ -1,0 +1,22 @@
+NEWS
+====
+
+Major changes for each release are described here. Detailed changes between
+two versions can be retrieved from Subversion.
+
+0.3
+=== (2007-??-??)
+
+* It is possible to get session ID from API.
+
+0.2
+=== (2007-10-01)
+
+* Modularize the code.
+* Add support for new services.
+
+0.1
+=== (2007-09-25)
+
+* Initial relase.
+

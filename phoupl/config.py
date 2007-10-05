@@ -32,13 +32,15 @@ class Config:
     make it more convenient to use.
     '''
 
-    def __init__(self, filename, defaults = {}):
+    def __init__(self, filename, defaults = None):
         '''
         Creates new configuration object, loads config from filename and
         applies defaults.
         '''
         self._config = ConfigParser.ConfigParser()
         self._config.read(os.path.expanduser(filename))
+        if defaults is None:
+            defaults = {}
         self._defaults = defaults
 
     def get(self, section, option):

@@ -42,6 +42,10 @@ class Config:
         self._defaults = defaults
 
     def get(self, section, option):
+        '''
+        Reads string value from configuration, if it is not found, it tries to
+        apply defaults, if even this fails, exception is raised.
+        '''
         try:
             return self._config.get(section, option)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
@@ -53,6 +57,10 @@ class Config:
             return self._defaults[section][option]
 
     def getint(self, section, option):
+        '''
+        Reads integer value from configuration, if it is not found, it tries
+        to apply defaults, if even this fails, exception is raised.
+        '''
         try:
             return self._config.getint(section, option)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
@@ -64,6 +72,10 @@ class Config:
             return self._defaults[section][option]
 
     def getbool(self, section, option):
+        '''
+        Reads boolean value from configuration, if it is not found, it tries
+        to apply defaults, if even this fails, exception is raised.
+        '''
         try:
             return self._config.getboolean(section, option)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):

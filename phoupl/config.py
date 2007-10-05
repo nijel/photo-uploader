@@ -51,7 +51,6 @@ class Config:
         try:
             return self._config.get(section, option)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
-            print 'DEF'
             if not self._defaults.has_key(section):
                 raise
             if not self._defaults[section].has_key(option):
@@ -66,7 +65,6 @@ class Config:
         try:
             return self._config.getint(section, option)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
-            print 'DEF'
             if not self._defaults.has_key(section):
                 raise
             if not self._defaults[section].has_key(option):
@@ -81,7 +79,6 @@ class Config:
         try:
             return self._config.getboolean(section, option)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
-            print 'DEF'
             if not self._defaults.has_key(section):
                 raise
             if not self._defaults[section].has_key(option):

@@ -90,10 +90,11 @@ class PhotoUploader:
         '''
         if self._debug:
             sys.stderr.write(80 * '-')
-            sys.stderr.write('\n%d: %s\n' % (
+            sys.stderr.write('\nStatus: %d: %s\n' % (
                 self._curl.getinfo(pycurl.HTTP_CODE),
                 self._curl.getinfo(pycurl.EFFECTIVE_URL)
                 ))
+            sys.stderr.write('Content:\n')
             sys.stderr.write(self._buffer.getvalue())
             sys.stderr.write('\n')
 

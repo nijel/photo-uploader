@@ -1,0 +1,9 @@
+; Sample configuration file for photo-uploader
+; Place this as ~/.photo-upload.
+[photo-upload]
+; Default service
+service = droxi.cz
+; Whether to open browser
+open-browser = Yes
+; Which browser to use
+use-browser = epiphany

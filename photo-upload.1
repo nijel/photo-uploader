@@ -69,6 +69,19 @@ Uploading photo and opening epiphany to finish order:
 
 photo-upload \-b \-B epiphany image.jpg
 
+.SH FILES
+
+.SS ~/.photo-upload
+
+Configuration file where default options are read. This is standard ini like
+format file. You can use same values as long options, just specify them in
+[photo-upload] section. Some services might also use this config file, check
+their documentation for details. Example configuration file:
+
+	[photo-upload]
+
+	service = droxi.cz
+
 .SH LICENCE
 This program is licensed under GNU/GPL version 2.
 

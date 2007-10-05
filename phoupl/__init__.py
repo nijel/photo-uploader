@@ -26,6 +26,7 @@ __version__ = '0.3'
 
 # Import main module
 import core
+import config
 
 # Import other required modules
 import copy

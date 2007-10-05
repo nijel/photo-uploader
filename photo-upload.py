@@ -28,16 +28,21 @@ import phoupl
 import webbrowser
 import sys
 import os
-import ConfigParser
 
 CONFIGFILE = '~/.photo-upload'
+CONFIGDEFAULTS = {
+        'photo-upload' : {
+            'service' : 'droxi.cz',
+            'open-browser' : 'No',
+            'use-browser' : '',
+            }
+        }
 
 def configure():
     '''
     Parameters and config file processing.
     '''
-    config = ConfigParser.ConfigParser()
-    config.read(os.path.expanduser(CONFIGFILE))
+    config = phoupl.config.Config(CONFIGFILE, CONFIGDEFAULTS)
 
     program_name = 'photo-upload %s' % phoupl.__version__
     usage = "usage: %prog [options] images"
@@ -48,7 +53,8 @@ def configure():
                       help="Display program license.")
     parser.add_option("-s", "--service",
                       action="store", type="string",
-                      dest="service_name", default="droxi.cz",
+                      dest="service_name",
+                      default=config.get('photo-upload', 'service'),
                       help="Name of service to use.")
     parser.add_option("-l", "--list-services",
                       action="store_true",
@@ -56,11 +62,13 @@ def configure():
                       help="List available services.")
     parser.add_option("-b", "--open-browser",
                       action="store_true",
-                      dest="open_browser", default=False,
+                      dest="open_browser",
+                      default=config.getbool('photo-upload', 'open-browser'),
                       help="Open order in browser after uploading.")
     parser.add_option("-B", "--use-browser",
                       action="store",
-                      dest="use_browser", default=None,
+                      dest="use_browser",
+                      default=config.get('photo-upload', 'use-browser'),
                       help="Define browser to use when opening web page. Default is autodetected by python webbrowser.")
     parser.add_option("-d", "--debug",
                       action="store_true",
@@ -136,7 +144,7 @@ def main():
             config = config)
 
     if options.open_browser:
-        if options.use_browser is not None:
+        if options.use_browser != '':
             os.system('%s \'%s\' &' % (options.use_browser, url))
         else:
             webbrowser.open(url)

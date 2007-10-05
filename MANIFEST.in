@@ -4,3 +4,4 @@ include README
 include INSTALL
 include NEWS
 include photo-upload.1
+include photo-uploadrc

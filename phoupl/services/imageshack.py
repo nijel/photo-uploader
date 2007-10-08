@@ -34,6 +34,8 @@ class ImageShackService(phoupl.core.PhotoUploader):
         # Init session...
         self.msg('Initialising session...')
         self.get('http://imageshack.us/')
+        self._img_urls = []
+        self._show_urls = []
 
     def _upload(self, image):
         self._curl.setopt(pycurl.HTTPHEADER, ['Expect:'])
@@ -51,9 +53,9 @@ class ImageShackService(phoupl.core.PhotoUploader):
                 ])
         data = self._buffer.getvalue()
         m = MATCHER_IMG.search(data)
-        self._img_url = m.group(1)
+        self._img_urls.append(m.group(1))
         m = MATCHER_SHOW.search(data)
-        self._show_url = m.group(1)
+        self._show_urls.append(m.group(1))
 
     def _post_upload(self):
         self.msg('''
@@ -61,10 +63,10 @@ You can link image as:
 %s
 You can display image here:
 %s
-''' %(self._img_url, self._show_url))
+''' % ('\n'.join(self._img_urls), '\n'.join(self._show_urls)))
 
     def get_review_url(self):
-        return self._show_url
+        return self._show_urls
 
 # Register service
 phoupl.register_service(

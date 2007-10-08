@@ -192,6 +192,8 @@ class PhotoUploader:
         '''
         Returns URL with information about service. You should implement
         this in subclass.
+
+        This function can return either string of list of strings.
         '''
         raise PhoUplNotImplemented()
 

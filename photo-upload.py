@@ -138,16 +138,20 @@ def main():
         parser.print_help()
         sys.exit("No files to upload.")
 
-    url = phoupl.upload_photos(options.service_name, args,
+    urls = phoupl.upload_photos(options.service_name, args,
             debug = options.debug,
             session = options.session,
             config = config)
 
-    if options.open_browser:
-        if options.use_browser != '':
-            os.system('%s \'%s\' &' % (options.use_browser, url))
-        else:
-            webbrowser.open(url)
+    if type(urls) == str:
+        urls = [urls]
+
+    for url in urls:
+        if options.open_browser:
+            if options.use_browser != '':
+                os.system('%s \'%s\' &' % (options.use_browser, url))
+            else:
+                webbrowser.open(url)
 
 
 if __name__ == '__main__':

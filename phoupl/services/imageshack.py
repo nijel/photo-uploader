@@ -75,5 +75,6 @@ phoupl.register_service(
         'http://imageshack.us/',
         ['new'],
         'ImageShack',
-        languages = ['eng']
+        languages = ['eng'],
+        servicetype = 'storage'
         )

@@ -116,6 +116,7 @@ def list_services():
         print 'Name: %s' % service
         info = phoupl.get_service_info(service)
         print_str(info, 'FullName')
+        print_str(info, 'Type')
         print_str(info, 'URL')
         print_list(info, 'Features')
         print_list(info, 'Languages')

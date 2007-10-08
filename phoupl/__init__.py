@@ -43,7 +43,8 @@ def register_service(name,
         features = [],
         fullname = None,
         countries = None,
-        languages = None
+        languages = None,
+        servicetype = 'digilab'
         ):
     '''
     Registration handler for adding service.
@@ -72,6 +73,9 @@ def register_service(name,
     @param languages: List od languages as ISO 639-2 language codes
     supported by service.
     @type languages: list of strings
+
+    @param servicetype: Type of service
+    @type servicetype: string, currently one of digilab, storage
     '''
     SERVICE_DB[name] = {
             'Class': handler,
@@ -84,6 +88,7 @@ def register_service(name,
         SERVICE_DB[name]['Countries'] = countries
     if languages is not None:
         SERVICE_DB[name]['Languages'] = languages
+    SERVICE_DB[name]['Type'] = servicetype
 
 def list_services():
     '''

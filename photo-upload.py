@@ -69,7 +69,8 @@ def configure():
                       action="store",
                       dest="use_browser",
                       default=config.get('photo-upload', 'use-browser'),
-                      help="Define browser to use when opening web page. Default is autodetected by python webbrowser.")
+                      help="Define browser to use when opening web page. " +
+                      "Default is autodetected by python webbrowser.")
     parser.add_option("-d", "--debug",
                       action="store_true",
                       dest="debug", default=False,
@@ -97,7 +98,7 @@ def print_str(info, name):
     try:
         print '%s: %s' % (name, info[name])
     except KeyError:
-        pass
+        return
 
 def print_list(info, name):
     '''
@@ -106,7 +107,7 @@ def print_list(info, name):
     try:
         print '%s: %s' % (name, ', '.join(info[name]))
     except KeyError:
-        pass
+        return
 
 def list_services():
     '''

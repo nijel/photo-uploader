@@ -32,15 +32,15 @@ import config
 import copy
 
 
+SERVICE_DB = {}
 '''
 Dictionary holding all available services.
 '''
-SERVICE_DB = {}
 
 def register_service(name,
         handler,
         url = '',
-        features = [],
+        features = None,
         fullname = None,
         countries = None,
         languages = None,
@@ -77,6 +77,8 @@ def register_service(name,
     @param servicetype: Type of service
     @type servicetype: string, currently one of digilab, storage
     '''
+    if features is None:
+        features = []
     SERVICE_DB[name] = {
             'Class': handler,
             'URL': url,
@@ -99,17 +101,24 @@ def list_services():
 def get_service_info(name):
     '''
     Returns information about service.
+
+    @param name: Name of service.
+    @type name: string
     '''
     result = copy.deepcopy(SERVICE_DB[name])
     del result['Class']
     return result
 
 def upload_photos(service, images, debug = False,
-        msgcallback = None, session = None, config = None):
+        msgcallback = None, session = None, configstorage = None):
     '''
     Uploads photos to defined service.
     '''
-    service = SERVICE_DB[service]['Class'](debug, msgcallback, session, config)
+    service = SERVICE_DB[service]['Class'](
+        debug,
+        msgcallback,
+        session,
+        configstorage)
     service.upload(images)
     return service.get_review_url()
 

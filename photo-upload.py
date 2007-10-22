@@ -143,7 +143,7 @@ def main():
     urls = phoupl.upload_photos(options.service_name, args,
             debug = options.debug,
             session = options.session,
-            config = config)
+            configstorage = config)
 
     if type(urls) == str:
         urls = [urls]

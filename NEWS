@@ -5,7 +5,10 @@ Major changes for each release are described here. Detailed changes between
 two versions can be retrieved from Subversion.
 
 0.4
-=== (2007-??-??)
+=== (2007-11-07)
+
+* Fixed crash.
+* Added uloz.to service.
 
 0.3
 === (2007-10-08)

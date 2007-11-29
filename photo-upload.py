@@ -130,6 +130,14 @@ def main():
     '''
     (options, args, parser, config) = configure()
 
+    if options.debug:
+        sys.stderr.write('Started photo-uploader, params:\n')
+        sys.stderr.write('%s\n' % repr(sys.argv))
+        sys.stderr.write('Options:\n')
+        sys.stderr.write('%s\n' % repr(options))
+        sys.stderr.write('Args:\n')
+        sys.stderr.write('%s\n' % repr(args))
+
     # List services
     if options.list_services:
         list_services()

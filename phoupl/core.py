@@ -164,6 +164,7 @@ class PhotoUploader:
         '''
         self.connect()
         count = len(images)
+        uploaded = 0
         for i in range(count):
             current = images[i]
             base = os.path.basename(current)
@@ -180,7 +181,13 @@ class PhotoUploader:
                 self.msg(('Skipped %s, not a file!' % current) + 40 * ' ')
                 continue
             self._upload(current)
-        self.msg(('Uploaded all %d photos' % count) + 40 * ' ')
+            uploaded = uploaded + 1
+        if uploaded == 0:
+            self.msg('None photos uploaded!')
+        elif uploaded == count:
+            self.msg(('Uploaded all %d photos' % count) + 40 * ' ')
+        else:
+            self.msg(('Uploaded %d photos out of %d files' % (uploaded, count)) + 40 * ' ')
         self._post_upload()
 
     def get_review_url(self):

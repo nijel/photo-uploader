@@ -176,6 +176,9 @@ class PhotoUploader:
                         base
                     ),
                     True)
+            if not os.path.isfile(current):
+                self.msg(('Skipped %s, not a file!' % current) + 40 * ' ')
+                continue
             self._upload(current)
         self.msg(('Uploaded all %d photos' % count) + 40 * ' ')
         self._post_upload()

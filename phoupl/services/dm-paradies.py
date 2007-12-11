@@ -23,55 +23,35 @@ this program; if not, write to the Free Software Foundation, Inc.,
 '''
 
 import phoupl
+import phoupl.ilikephoto
 import pycurl
 
-class DMParadiesService(phoupl.core.PhotoUploader):
+class DMParadiesService(phoupl.core.PhotoUploader, phoupl.ilikephoto.ILikePhoto):
     def _connect(self):
+        phoupl.ilikephoto.ILikePhoto.__init__(self, 'http://sberna7.ifoto.cz', 'sberna7')
         # Use preseeded session
         if self._session is not None:
             self.msg('Reusing session %s' % self._session)
             return
 
         # Init session...
-        self.msg('Initialising session...')
-        self.get('http://sberna7.ifoto.cz/')
-        self.cookies = self._curl.getinfo(pycurl.INFO_COOKIELIST)
-        self._session = self.cookies[0].split('\t')[6]
-        self.msg('Created session %s' % self._session)
+        self.ipl_init_session()
 
         # Select fast/cheaper/simple order...
-        self.msg('Selecting fast/cheaper/simple order...')
-        self.post('http://sberna7.ifoto.cz/index.php',
-                [
-                    ('krok_zpet', '4'), 
-                    ('set_ordertype', 'disc'), 
-                    ('pokracovat', 'some text')
-                ])
+        self.ipl_select_simple()
 
     def _upload(self, image):
-        self.post(
-                'http://sberna7.ifoto.cz/vlozit-fotografie/upload.php?ilikephoto=%s&verze=droxi' % self._session,
-                [
-                    ('sessionid',  self._session), 
-                    ('f1', (pycurl.FORM_FILE, image)), 
-                    ('nf1', ''),
-                    ('pokracovat', 'some text')
-                ])
+        self.ipl_upload(image)
 
     def _post_upload(self):
-        self.msg('''
-You can review them here:
-http://sberna7.ifoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s
-You can finish order here:
-http://sberna7.ifoto.cz/format-fotografii/?ilikephoto=%s
-''' %(self._session, self._session))
+        self.ipl_post_upload()
 
     def get_review_url(self):
-        return 'http://sberna7.ifoto.cz/prehled-vlozenych-fotografii/?ilikephoto=%s' % self._session
+        return self.ipl_get_review_url()
 
 # Register service
 phoupl.register_service(
-        'dm-drogeriemarkt.cz', 
+        'dm-drogeriemarkt.cz',
         DMParadiesService,
         'http://www.dm-drogeriemarkt.cz/fotoparadies/',
         ['new', 'reuse'],

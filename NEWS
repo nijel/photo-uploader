@@ -7,6 +7,9 @@ two versions can be retrieved from Subversion.
 0.5
 === (2007-xx-xx)
 
+* Added generic helper for ILikePhoto service.
+* Added some error checking.
+
 0.4
 === (2007-11-07)
 

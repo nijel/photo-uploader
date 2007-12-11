@@ -9,6 +9,7 @@ two versions can be retrieved from Subversion.
 
 * Added generic helper for ILikePhoto service.
 * Added some error checking.
+* Fixed handling of wrong parameters passed (non files).
 
 0.4
 === (2007-11-07)

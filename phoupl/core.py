@@ -127,6 +127,8 @@ class PhotoUploader:
         '''
         Performs POST request on URL with parameters.
         '''
+        if self._debug:
+            sys.stderr.write('POST: %s\n' % url)
         # Set URL to fetch
         self._curl.setopt(pycurl.URL, url)
         # Set POST content

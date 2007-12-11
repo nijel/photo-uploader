@@ -35,6 +35,12 @@ class PhoUplNotImplemented(Exception):
     '''
     pass
 
+class UploadFailed(Exception):
+    '''
+    Raised when upload fails.
+    '''
+    pass
+
 class PhotoUploader:
     '''
     Generic photo uploader class for handling photo uploads.

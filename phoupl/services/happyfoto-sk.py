@@ -24,10 +24,6 @@ this program; if not, write to the Free Software Foundation, Inc.,
 
 import phoupl
 import phoupl.happyfoto
-import pycurl
-import re
-
-MATCHER_SESSION = re.compile('action="/ul/upload.cgi\?tmp_sid=([^"]*)"')
 
 class HappyFotoSKService(phoupl.core.PhotoUploader, phoupl.happyfoto.HappyFoto):
     def _connect(self):

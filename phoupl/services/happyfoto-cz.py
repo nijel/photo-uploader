@@ -24,11 +24,6 @@ this program; if not, write to the Free Software Foundation, Inc.,
 
 import phoupl
 import phoupl.happyfoto
-import pycurl
-import re
-
-MATCHER_SHOW = re.compile('<a href="(http://uloz.to/[^"]*)">http://uloz.to/')
-MATCHER_SESSION = re.compile('action="/ul/upload.cgi\?tmp_sid=([^"]*)"')
 
 class HappyFotoCZService(phoupl.core.PhotoUploader, phoupl.happyfoto.HappyFoto):
     def _connect(self):

@@ -34,7 +34,7 @@ class HappyFotoSKService(phoupl.core.PhotoUploader, phoupl.happyfoto.HappyFoto):
         phoupl.happyfoto.HappyFoto._upload(self, image)
 
     def get_review_url(self):
-        phoupl.happyfoto.HappyFoto.get_review_url(self)
+        return phoupl.happyfoto.HappyFoto.get_review_url(self)
 
 # Register service
 phoupl.register_service(

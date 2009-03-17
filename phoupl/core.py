@@ -41,6 +41,12 @@ class UploadFailed(Exception):
     '''
     pass
 
+class NotConfigured(Exception):
+    '''
+    Raised when configuration is missing.
+    '''
+    pass
+
 class PhotoUploader:
     '''
     Generic photo uploader class for handling photo uploads.

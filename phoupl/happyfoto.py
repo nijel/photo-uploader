@@ -23,8 +23,10 @@ this program; if not, write to the Free Software Foundation, Inc.,
 '''
 
 import pycurl
-
+import ConfigParser
 import re
+
+import phoupl.core
 
 MATCHER_SESSION = re.compile('window.location.href = \'album\?xsl=standard&action=album&id=([0-9A-Z]*)\'')
 
@@ -37,8 +39,18 @@ class HappyFoto:
             self._baseurl = 'http://digi.%s/' % domain
         self._domain = domain
         self._mnd = mnd
-        self._user = self._config.get(domain, 'user')
-        self._password = self._config.get(domain, 'password')
+        try:
+            self._user = self._config.get(domain, 'user')
+        except ConfigParser.NoSectionError:
+            raise phoupl.core.NotConfigured('Please set user and password in section [%s] in config file!' % domain)
+        except ConfigParser.NoOptionError:
+            raise phoupl.core.NotConfigured('Please set user in section [%s] in config file!' % domain)
+        try:
+            self._password = self._config.get(domain, 'password')
+        except ConfigParser.NoSectionError:
+            raise phoupl.core.NotConfigured('Please set user and password in section [%s] in config file!' % domain)
+        except ConfigParser.NoOptionError:
+            raise phoupl.core.NotConfigured('Please set password in section [%s] in config file!' % domain)
 
     def _connect(self):
         # Init session...

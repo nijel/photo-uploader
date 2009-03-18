@@ -27,7 +27,7 @@ import phoupl.happyfoto
 
 class HappyFotoSKService(phoupl.core.PhotoUploader, phoupl.happyfoto.HappyFoto):
     def _connect(self):
-        phoupl.happyfoto.HappyFoto.__init__(self, 'happyfoto.sk', 4)
+        phoupl.happyfoto.HappyFoto.__init__(self, 'happyfoto.sk', 11)
         phoupl.happyfoto.HappyFoto._connect(self)
 
     def _upload(self, image):

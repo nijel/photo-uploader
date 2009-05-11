@@ -2,6 +2,6 @@ include AUTHORS
 include COPYING
 include README
 include INSTALL
-include NEWS
+include ChangeLog
 include photo-upload.1
 include photo-uploadrc

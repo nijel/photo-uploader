@@ -27,7 +27,7 @@ import pycurl
 import re
 
 MATCHER_IMG = re.compile('\[IMG\](.*)\[/IMG\]')
-MATCHER_SHOW = re.compile('href="([^"]*)"><b>Show<')
+MATCHER_SHOW = re.compile('url=([^"]*)&optsize=320x240')
 
 class ImageShackService(phoupl.core.PhotoUploader):
     def _connect(self):

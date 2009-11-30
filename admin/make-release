@@ -17,7 +17,7 @@ if [ "x$1" = "xbranch" ] ; then
     checkout=HEAD
     dotag=1
     # Pre release checks
-    if grep -q '^200[0-9]???? - ' ChangeLog ; then
+    if grep -q '^200[0-9]-??-?? - ' ChangeLog ; then
         echo 'ChangeLog does not seem to be finalised, aborting!'
         exit 1
     fi
@@ -44,6 +44,7 @@ mv dist/* ../
 if [ $dotag -eq 1 ] ; then
     ./setup.py register
     # Tag the release
+    cd $srcdir
     git tag -s -m "Tag release $version" "$version"
 fi
 

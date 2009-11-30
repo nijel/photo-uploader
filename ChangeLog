@@ -9,6 +9,7 @@ two versions can be retrieved from Subversion.
 
 * Fixed grabbing URL from imageshack.
 * Fixed defaults to not open browser.
+* Default to imageshack.us service.
 
 0.7
 === (2009-05-11)

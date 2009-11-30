@@ -32,7 +32,7 @@ import os
 CONFIGFILE = '~/.photo-upload'
 CONFIGDEFAULTS = {
         'photo-upload' : {
-            'service' : 'droxi.cz',
+            'service' : 'imageshack.us',
             'open-browser' : False,
             'use-browser' : '',
             }

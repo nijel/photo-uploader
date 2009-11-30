@@ -42,4 +42,14 @@ always formatted like Debian control files (see Debian Policy Manual at
 detailed description). Name field is required all others are basically
 optional and new fields can be added by later versions.
 
+
+Contributing
+============
+
+You can checkout sources using Git from Gitorious
+<http://gitorious.org/photo-uploader>:
+
+git clone git://gitorious.org/photo-uploader/photo-uploader.git
+
+
 # vim: et ts=4 sw=4 sts=4 tw=72 spell spelllang=en_us

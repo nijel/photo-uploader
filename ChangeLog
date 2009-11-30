@@ -5,7 +5,7 @@ Major changes for each release are described here. Detailed changes between
 two versions can be retrieved from Subversion.
 
 0.8
-=== (2009-??-??)
+=== (2009-10-30)
 
 * Fixed grabbing URL from imageshack.
 * Fixed defaults to not open browser.

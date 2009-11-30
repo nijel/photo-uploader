@@ -33,7 +33,7 @@ CONFIGFILE = '~/.photo-upload'
 CONFIGDEFAULTS = {
         'photo-upload' : {
             'service' : 'droxi.cz',
-            'open-browser' : 'No',
+            'open-browser' : False,
             'use-browser' : '',
             }
         }

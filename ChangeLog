@@ -8,6 +8,7 @@ two versions can be retrieved from Subversion.
 === (2009-??-??)
 
 * Fixed grabbing URL from imageshack.
+* Fixed defaults to not open browser.
 
 0.7
 === (2009-05-11)

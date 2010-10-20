@@ -6,7 +6,7 @@ Photo-Uploader wrapper for ImageShack service.
 __author__ = 'Michal Čihař'
 __email__ = 'michal@cihar.com'
 __license__ = '''
-Copyright © 2007 - 2009 Michal Čihař
+Copyright © 2007 - 2010 Michal Čihař
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License version 2 as published by

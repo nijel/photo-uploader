@@ -26,8 +26,8 @@ import phoupl
 import pycurl
 import re
 
-MATCHER_IMG = re.compile('\[IMG\](.*)\[/IMG\]')
-MATCHER_SHOW = re.compile('Direct <a style=\'font-size: 15pt;\' href=\'([^\']*)\' onClick')
+
+MATCHER_TAG = re.compile(r'\[URL=([^]]*)\]\[IMG\]([^]]*)\[/IMG\]\[/URL\]')
 
 class ImageShackService(phoupl.core.PhotoUploader):
     def _connect(self):
@@ -52,9 +52,8 @@ class ImageShackService(phoupl.core.PhotoUploader):
 
                 ])
         data = self._buffer.getvalue()
-        m = MATCHER_IMG.search(data)
-        self._img_urls.append(m.group(1))
-        m = MATCHER_SHOW.search(data)
+        m = MATCHER_TAG.search(data)
+        self._img_urls.append(m.group(2))
         self._show_urls.append(m.group(1))
 
     def _post_upload(self):

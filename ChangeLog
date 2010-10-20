@@ -4,10 +4,15 @@ ChangeLog for photo-uploader
 Major changes for each release are described here. Detailed changes between
 two versions can be retrieved from Git.
 
-0.9
-=== (2010-10-??)
+0.10
+==== (2010-10-??)
 
 * Compatibility with Python 3.
+
+0.9
+=== (2010-02-10)
+
+* Fixed grabbing URL from imageshack.
 
 0.8
 === (2009-10-30)

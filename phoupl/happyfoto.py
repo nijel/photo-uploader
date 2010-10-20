@@ -23,7 +23,10 @@ this program; if not, write to the Free Software Foundation, Inc.,
 '''
 
 import pycurl
-import ConfigParser
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
 import re
 
 import phoupl.core
@@ -41,15 +44,15 @@ class HappyFoto:
         self._mnd = mnd
         try:
             self._user = self._config.get(domain, 'user')
-        except ConfigParser.NoSectionError:
+        except configparser.NoSectionError:
             raise phoupl.core.NotConfigured('Please set user and password in section [%s] in config file!' % domain)
-        except ConfigParser.NoOptionError:
+        except configparser.NoOptionError:
             raise phoupl.core.NotConfigured('Please set user in section [%s] in config file!' % domain)
         try:
             self._password = self._config.get(domain, 'password')
-        except ConfigParser.NoSectionError:
+        except configparser.NoSectionError:
             raise phoupl.core.NotConfigured('Please set user and password in section [%s] in config file!' % domain)
-        except ConfigParser.NoOptionError:
+        except configparser.NoOptionError:
             raise phoupl.core.NotConfigured('Please set password in section [%s] in config file!' % domain)
 
     def _connect(self):

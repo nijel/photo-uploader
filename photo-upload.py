@@ -85,8 +85,8 @@ def configure():
 
     # Informational options
     if options.show_license:
-        print program_name
-        print __license__
+        print(program_name)
+        print(__license__)
         sys.exit(0)
 
     return (options, args, parser, config)
@@ -96,7 +96,7 @@ def print_str(info, name):
     Prints single string value.
     '''
     try:
-        print '%s: %s' % (name, info[name])
+        print('%s: %s' % (name, info[name]))
     except KeyError:
         return
 
@@ -105,7 +105,7 @@ def print_list(info, name):
     Prints list value.
     '''
     try:
-        print '%s: %s' % (name, ', '.join(info[name]))
+        print('%s: %s' % (name, ', '.join(info[name])))
     except KeyError:
         return
 
@@ -114,7 +114,7 @@ def list_services():
     List available services.
     '''
     for service in phoupl.list_services():
-        print 'Name: %s' % service
+        print('Name: %s' % service)
         info = phoupl.get_service_info(service)
         print_str(info, 'FullName')
         print_str(info, 'Type')
@@ -122,7 +122,7 @@ def list_services():
         print_list(info, 'Features')
         print_list(info, 'Languages')
         print_list(info, 'Countries')
-        print
+        print()
 
 def main():
     '''

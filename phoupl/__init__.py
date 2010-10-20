@@ -25,8 +25,8 @@ this program; if not, write to the Free Software Foundation, Inc.,
 __version__ = '0.8'
 
 # Import main module
-import core
-import config
+from . import core
+from . import config
 
 # Import other required modules
 import copy
@@ -96,7 +96,7 @@ def list_services():
     '''
     Returns list of available services.
     '''
-    return SERVICE_DB.keys()
+    return list(SERVICE_DB.keys())
 
 def get_service_info(name):
     '''

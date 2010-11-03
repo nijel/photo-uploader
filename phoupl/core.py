@@ -5,6 +5,8 @@ Photo-Uploader core.
 Generic class for uploading photos, no real functionality, just wrapping cURL
 and image uploading.
 '''
+from __future__ import print_function
+
 __author__ = 'Michal Čihař'
 __email__ = 'michal@cihar.com'
 __license__ = '''
@@ -23,8 +25,6 @@ You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 '''
-
-from __future__ import print_function
 
 import sys
 import os

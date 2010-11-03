@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    man
+   api
 
 Indices and tables
 ==================

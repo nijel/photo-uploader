@@ -3,8 +3,6 @@ photo-upload command line reference
 
 .. program:: photo-upload
 
-photo-upload - tool for uploading photos
-
 Synopsis
 ++++++++
 

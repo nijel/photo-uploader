@@ -1,107 +1,179 @@
-.TH PHOTO-UPLOAD "1" "March 2009" "photo-upload 0.7" "User Commands"
-
+.TH "PHOTO-UPLOAD" "1" "November 03, 2010" "0.9" "Photo Uploader"
 .SH NAME
 photo-upload \- tool for uploading photos
-
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.\" Man page generated from reStructeredText.
+.
 .SH SYNOPSIS
-.B photo-upload
-.RI [options]
-.I images
-.br
-
+.sp
+.nf
+.ft C
+photo\-upload [options] images
+.ft P
+.fi
 .SH DESCRIPTION
-This manual page explains the
-.B photo-upload
-program. This program is simple uploader of photos to minilab.
-
+.sp
+This manual page explains the photo\-upload program. This program is simple
+uploader of photos to minilab.
 .SH OPTIONS
+.INDENT 0.0
 .TP
-\fB\-\-version\fR
-show program's version number and exit
+.B \-\-version
+.
+Show program\(aqs version number and exit.
+.UNINDENT
+.INDENT 0.0
 .TP
-\fB\-h\fR, \fB\-\-help\fR
-show this help message and exit
+.B \-h, \-\-help
+.sp
+Show help message and exit.
+.UNINDENT
+.INDENT 0.0
 .TP
-\fB\-\-license\fR
+.B \-\-license
+.
 Display program license.
+.UNINDENT
+.INDENT 0.0
 .TP
-\fB\-s\fR SERVICE_NAME, \fB\-\-service\fR=\fISERVICE_NAME\fR
-Name of service to use. Use \fBphoto-upload \-l\fR to list currently 
+.B \-s SERVICE_NAME, \-\-service=SERVICE_NAME
+.sp
+Name of service to use. Use photo\-upload \-l to list currently
 available services.
+.UNINDENT
+.INDENT 0.0
 .TP
-\fB\-l\fR, \fB\-\-list\-services\fR
+.B \-l, \-\-list\-services
+.sp
 List available services.
+.UNINDENT
+.INDENT 0.0
 .TP
-\fB\-b\fR, \fB\-\-open\-browser\fR
+.B \-b, \-\-open\-browser
+.sp
 Open order in browser after uploading.
+.UNINDENT
+.INDENT 0.0
 .TP
-\fB\-B\fR, \fB\-\-use\-browser\fR
+.B \-B, \-\-use\-browser
+.sp
 Define browser to use when opening web page. Default is autodetected by python
 webbrowser. You can also specify any parameter to browser, the URL will be
 just appended to string you enter here and passed to shell.
+.UNINDENT
+.INDENT 0.0
 .TP
-\fB\-d\fR, \fB\-\-debug\fR
+.B \-d, \-\-debug
+.sp
 Show debugging output. This includes HTML files received from service.
+.UNINDENT
+.INDENT 0.0
 .TP
-\fB\-S\fR SESSION, \fB\-\-session\fR=\fISESSION\fR
-Existing session to reuse (some services won't work
+.B \-S SESSION, \-\-session=SESSION
+.sp
+Existing session to reuse (some services won\(aqt work
 without existing session).
-
+.UNINDENT
 .SH EXAMPLES
-
-.TP
+.sp
 Uploading all photos from /folder to default service and opening web browser to finish order:
-
-photo-upload \-b /folder/*.jpg
-
-.TP
+.sp
+.nf
+.ft C
+photo\-upload \-b /folder/*.jpg
+.ft P
+.fi
+.sp
 Adding one image to existing session on ilikephoto.cz service:
-
-photo-upload \-s ilikephoto.cz \-S f1721a19cc3c95218525a8429d48dab2 /tmp/Obraz024.jpg
-
-.TP
+.sp
+.nf
+.ft C
+photo\-upload \-s ilikephoto.cz \-S f1721a19cc3c95218525a8429d48dab2 /tmp/Obraz024.jpg
+.ft P
+.fi
+.sp
 Listing currently supported services:
-
-photo-upload \-l
-
-.TP
+.sp
+.nf
+.ft C
+photo\-upload \-l
+.ft P
+.fi
+.sp
 Uploading photo and opening epiphany to finish order:
-
-photo-upload \-b \-B epiphany image.jpg
-
+.sp
+.nf
+.ft C
+photo\-upload \-b \-B epiphany image.jpg
+.ft P
+.fi
 .SH FILES
-
-.SS ~/.photo-upload
-
+.SS \fB~/.photo\-upload\fP
+.sp
 Configuration file where default options are read. This is standard ini like
 format file. You can use same values as long options, just specify them in
-[photo-upload] section. Some services might also use this config file, check
+[photo\-upload] section. Some services might also use this config file, check
 their documentation for details. Example configuration file:
+.sp
+.nf
+.ft C
+[photo\-upload]
 
-	[photo-upload]
-
-	service = droxi.cz
-
+service = droxi.cz
+.ft P
+.fi
+.sp
 Some services require additional configuration sections, eg. with login names:
-
-    [happyfoto.cz]
-    user = name
-    password = passphrase
-
+.sp
+.nf
+.ft C
+[happyfoto.cz]
+user = name
+password = passphrase
+.ft P
+.fi
 .SH LICENCE
+.sp
 This program is licensed under GNU/GPL version 2.
-
 .SH BUGS
+.sp
 There are definitely many bugs, reporting to author is welcome. Please include
 some useful information when sending bug reports (eg. exception you received
-and debug output). Please submit your reports to <http://bugs.cihar.com/>.
-
+and debug output). Please submit your reports to <\fI\%http://bugs.cihar.com/\fP>.
 .SH SEE ALSO
+.sp
 More information is available on program website:
-<\fIhttp://cihar.com/software/photo-uploader/\fR>.
-
+<\fI\%http://cihar.com/software/photo-uploader/\fP>.
 .SH AUTHOR
-Michal Cihar <\fImichal@cihar.com\fR>
-
+Michal Čihař <michal@cihar.com>
 .SH COPYRIGHT
-Copyright \(co 2007 - 2010 Michal Cihar <\fImichal@cihar.com\fR>
+2007 - 2010, Michal Čihař
+.\" Generated by docutils manpage writer.
+.\" 
+.

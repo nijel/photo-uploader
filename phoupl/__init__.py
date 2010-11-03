@@ -6,7 +6,7 @@ Photo-Uploader module
 __author__ = 'Michal Čihař'
 __email__ = 'michal@cihar.com'
 __license__ = '''
-Copyright © 2007 - 2009 Michal Čihař
+Copyright © 2007 - 2010 Michal Čihař
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License version 2 as published by
@@ -22,11 +22,11 @@ this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 '''
 
-__version__ = '0.9'
+__version__ = '0.10'
 
 # Import main module
-import core
-import config
+from . import core
+from . import config
 
 # Import other required modules
 import copy
@@ -92,7 +92,7 @@ def list_services():
     '''
     Returns list of available services.
     '''
-    return SERVICE_DB.keys()
+    return list(SERVICE_DB.keys())
 
 def get_service_info(name):
     '''

@@ -7,7 +7,7 @@ Photo uploader, setup script.
 __author__ = 'Michal Čihař'
 __email__ = 'michal@cihar.com'
 __license__ = '''
-Copyright © 2007 - 2009 Michal Čihař
+Copyright © 2007 - 2010 Michal Čihař
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License version 2 as published by
@@ -34,7 +34,7 @@ from stat import ST_MODE
 try:
     import pycurl
 except ImportError:
-    print 'You need PycURL for Photo-Uploader, download it from <http://pycurl.sourceforge.net/>'
+    print('You need PycURL for Photo-Uploader, download it from <http://pycurl.sourceforge.net/>')
     sys.exit(1)
 
 # check if Python is called on the first line with this expression
@@ -113,8 +113,8 @@ class build_scripts_phoupl(distutils.command.build_scripts.build_scripts, object
                 if self.dry_run:
                     distutils.log.info("changing mode of %s", file)
                 else:
-                    oldmode = os.stat(file)[ST_MODE] & 07777
-                    newmode = (oldmode | 0555) & 07777
+                    oldmode = os.stat(file)[ST_MODE] & 0o7777
+                    newmode = (oldmode | 0o555) & 0o7777
                     if newmode != oldmode:
                         distutils.log.info("changing mode of %s from %o to %o",
                                  file, oldmode, newmode)
@@ -126,9 +126,9 @@ setup(name = 'photo-uploader',
     version = phoupl.__version__,
     description = 'Simple tool to upload photos to minilab',
     long_description = '',
-    author = u"Michal Cihar",
+    author = "Michal Cihar",
     author_email = "michal@cihar.com",
-    maintainer = u"Michal Cihar",
+    maintainer = "Michal Cihar",
     maintainer_email = "michal@cihar.com",
     platforms = ['Linux', 'Mac OSX', 'Windows XP/2000/NT', 'Windows 95/98/ME'],
     keywords = ['photo', 'image', 'order', 'print'],

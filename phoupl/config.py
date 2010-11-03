@@ -6,7 +6,7 @@ Photo-Uploader configuration manager.
 __author__ = 'Michal Čihař'
 __email__ = 'michal@cihar.com'
 __license__ = '''
-Copyright © 2007 - 2009 Michal Čihař
+Copyright © 2007 - 2010 Michal Čihař
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License version 2 as published by
@@ -22,7 +22,10 @@ this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 '''
 
-import ConfigParser
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
 import os
 
 class Config:
@@ -36,7 +39,7 @@ class Config:
         Creates new configuration object, loads config from filename and
         applies defaults.
         '''
-        self._config = ConfigParser.ConfigParser()
+        self._config = configparser.ConfigParser()
         self._config.read(os.path.expanduser(filename))
         if defaults is None:
             defaults = {}
@@ -49,10 +52,10 @@ class Config:
         '''
         try:
             return self._config.get(section, option)
-        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
-            if not self._defaults.has_key(section):
+        except (configparser.NoOptionError, configparser.NoSectionError):
+            if section not in self._defaults:
                 raise
-            if not self._defaults[section].has_key(option):
+            if option not in self._defaults[section]:
                 raise
             return self._defaults[section][option]
 
@@ -63,10 +66,10 @@ class Config:
         '''
         try:
             return self._config.getint(section, option)
-        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
-            if not self._defaults.has_key(section):
+        except (configparser.NoOptionError, configparser.NoSectionError):
+            if section not in self._defaults:
                 raise
-            if not self._defaults[section].has_key(option):
+            if option not in self._defaults[section]:
                 raise
             return self._defaults[section][option]
 
@@ -77,9 +80,9 @@ class Config:
         '''
         try:
             return self._config.getboolean(section, option)
-        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
-            if not self._defaults.has_key(section):
+        except (configparser.NoOptionError, configparser.NoSectionError):
+            if section not in self._defaults:
                 raise
-            if not self._defaults[section].has_key(option):
+            if option not in self._defaults[section]:
                 raise
             return self._defaults[section][option]

@@ -8,7 +8,7 @@ and image uploading.
 __author__ = 'Michal Čihař'
 __email__ = 'michal@cihar.com'
 __license__ = '''
-Copyright © 2007 - 2009 Michal Čihař
+Copyright © 2007 - 2010 Michal Čihař
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License version 2 as published by
@@ -27,7 +27,7 @@ this program; if not, write to the Free Software Foundation, Inc.,
 import sys
 import os
 import pycurl
-import StringIO
+import io
 
 class PhoUplNotImplemented(Exception):
     '''
@@ -65,7 +65,7 @@ class PhotoUploader:
 
         # Curl backend
         self._curl = pycurl.Curl()
-        self._buffer = StringIO.StringIO()
+        self._buffer = io.StringIO()
         # Write output to string buffer
         self._curl.setopt(pycurl.WRITEFUNCTION, self._buffer.write)
         # We need to follow redirects
@@ -81,9 +81,9 @@ class PhotoUploader:
             self._msgcallback(text, noeol)
         else:
             if noeol:
-                print text,
+                print(text, end=' ')
             else:
-                print text
+                print(text)
             sys.stdout.flush()
 
     def get_session(self):

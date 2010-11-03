@@ -8,6 +8,7 @@ two versions can be retrieved from Git.
 ==== (2010-10-??)
 
 * Compatibility with Python 3.
+* Added documentation in Sphinx format.
 
 0.9
 === (2010-02-10)

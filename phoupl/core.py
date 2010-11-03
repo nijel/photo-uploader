@@ -24,12 +24,12 @@ this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 '''
 
+from __future__ import print_function
+
 import sys
 import os
 import pycurl
 import io
-
-from __future__ import print_function
 
 class PhoUplNotImplemented(Exception):
     '''

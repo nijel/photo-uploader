@@ -52,30 +52,26 @@ def register_service(name,
     Parameters handler, url and features should be allways filled, rest
     is optional.
 
-    @param handler: Class to handle uploads.
-    @type handler: Class
+    :param handler: Class to handle uploads.
+    :type handler: Class
 
-    @param url: URL with service information.
-    @type URL: string
+    :param url: URL with service information.
+    :type URL: string
 
-    @param features: Features supported by service, check README for
-    their listing.
-    @type features: list of strings
+    :param features: Features supported by service, check README for their listing.
+    :type features: list of strings
 
-    @param fullname: Printable name of service. This should be unique
-    among all services in one country.
-    @type fullname: string
+    :param fullname: Printable name of service. This should be unique among all services in one country.
+    :type fullname: string
 
-    @param countries: List of countries where service is available as
-    ISO 3166 codes.
-    @type countries: list of strings
+    :param countries: List of countries where service is available as ISO 3166 codes.
+    :type countries: list of strings
 
-    @param languages: List od languages as ISO 639-2 language codes
-    supported by service.
-    @type languages: list of strings
+    :param languages: List od languages as ISO 639-2 language codes supported by service.
+    :type languages: list of strings
 
-    @param servicetype: Type of service
-    @type servicetype: string, currently one of digilab, storage
+    :param servicetype: Type of service
+    :type servicetype: string, currently one of digilab, storage
     '''
     if features is None:
         features = []
@@ -102,8 +98,9 @@ def get_service_info(name):
     '''
     Returns information about service.
 
-    @param name: Name of service.
-    @type name: string
+    :param name: Name of service.
+    :type name: string
+
     '''
     result = copy.deepcopy(SERVICE_DB[name])
     del result['Class']

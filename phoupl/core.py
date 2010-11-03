@@ -29,6 +29,8 @@ import os
 import pycurl
 import io
 
+from __future__ import print_function
+
 class PhoUplNotImplemented(Exception):
     '''
     Raised when some functionality not implemented by plugin.

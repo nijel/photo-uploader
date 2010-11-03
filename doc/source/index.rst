@@ -3,10 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Photo Uploader's documentation!
-==========================================
+The Photo Uploader Manual
+=========================
 
-Contents:
+Photo uploader is a simple Python script to upload photos to minilab.
+
+Continue reading:
 
 .. toctree::
    :maxdepth: 2

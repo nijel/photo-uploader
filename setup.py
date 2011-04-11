@@ -25,6 +25,7 @@ this program; if not, write to the Free Software Foundation, Inc.,
 
 from distutils.core import setup
 import distutils.command.build_scripts
+import distutils.sysconfig
 import re
 import os
 import sys

@@ -67,7 +67,7 @@ class PhotoUploader:
 
         # Curl backend
         self._curl = pycurl.Curl()
-        self._buffer = io.StringIO()
+        self._buffer = io.BytesIO()
         # Write output to string buffer
         self._curl.setopt(pycurl.WRITEFUNCTION, self._buffer.write)
         # We need to follow redirects

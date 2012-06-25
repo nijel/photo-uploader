@@ -39,17 +39,18 @@ class ImageShackService(phoupl.core.PhotoUploader):
 
     def _upload(self, image):
         self._curl.setopt(pycurl.HTTPHEADER, ['Expect:'])
-        self.post('http://imageshack.us/',
+        self.post('http://imageshack.us/upload_api.php',
                 [
                     ('fileupload', (pycurl.FORM_FILE, image)),
                     ('uploadtype', 'on'),
                     ('refer', 'http://www.imageshack.us/'),
                     ('brand', ''),
                     ('email', ''),
+                    ('key', 'SYKFZ21G9186be76287f58e42c6f5ef47b992697'),
                     ('MAX_FILE_SIZE', '13145728'),
                     ('optsize', '320x320'),
-                    ('url', 'paste image url here'),
-
+                    ('a_username', self._config.get('imageshack.us', 'user')),
+                    ('cookie', self._config.get('imageshack.us', 'regcode')),
                 ])
         data = self._buffer.getvalue()
         m = MATCHER_TAG.search(data)

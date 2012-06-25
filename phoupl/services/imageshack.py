@@ -46,9 +46,8 @@ class ImageShackService(phoupl.core.PhotoUploader):
                     ('refer', 'http://www.imageshack.us/'),
                     ('brand', ''),
                     ('email', ''),
-                    ('rembar', '1'),
                     ('MAX_FILE_SIZE', '13145728'),
-                    ('optsize', '800x800'),
+                    ('optsize', '320x320'),
                     ('url', 'paste image url here'),
 
                 ])

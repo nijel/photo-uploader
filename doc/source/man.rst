@@ -113,6 +113,15 @@ Some services require additional configuration sections, eg. with login names:
     user = name
     password = passphrase
 
+Some services may require specifying registration code instead of the password:
+
+.. code-block:: ini
+
+    [imageshack.us]
+    user = name
+    regcode = 575af6686afe6a0c1d
+
+
 Licence
 +++++++
 

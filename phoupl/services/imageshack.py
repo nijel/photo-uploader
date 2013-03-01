@@ -44,6 +44,7 @@ class ImageShackService(phoupl.core.PhotoUploader):
                     ('fileupload', (pycurl.FORM_FILE, image)),
                     ('format', 'json'),
                     ('email', ''),
+                    ('public', 'yes' if self._config.getbool('imageshack.us', 'public') else 'no'),
                     ('key', 'SYKFZ21G9186be76287f58e42c6f5ef47b992697'),
                     ('cookie', self._config.get('imageshack.us', 'regcode')),
                 ])

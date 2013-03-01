@@ -35,6 +35,9 @@ CONFIGDEFAULTS = {
             'service' : 'imageshack.us',
             'open-browser' : False,
             'use-browser' : '',
+            },
+        'imageshack.us' : {
+            'public' : False,
             }
         }
 

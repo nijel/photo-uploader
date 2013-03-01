@@ -1,4 +1,4 @@
-.TH "PHOTO-UPLOAD" "1" "November 03, 2010" "0.9" "Photo Uploader"
+.TH "PHOTO-UPLOAD" "1" "March 01, 2013" "0.9" "Photo Uploader"
 .SH NAME
 photo-upload \- tool for uploading photos
 .
@@ -158,6 +158,19 @@ user = name
 password = passphrase
 .ft P
 .fi
+.sp
+Some services may require specifying registration code instead of the password:
+.sp
+.nf
+.ft C
+[imageshack.us]
+user = name
+regcode = 575af6686afe6a0c1d
+.ft P
+.fi
+.sp
+Imageshack also allows you to choose if the image is private or public, defaulting
+to private. To change that, specify public = yes under imageshack.us section.
 .SH LICENCE
 .sp
 This program is licensed under GNU/GPL version 2.

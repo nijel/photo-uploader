@@ -121,6 +121,9 @@ Some services may require specifying registration code instead of the password:
     user = name
     regcode = 575af6686afe6a0c1d
 
+Imageshack also allows you to choose if the image is private or public, defaulting
+to private. To change that, specify public = yes under imageshack.us section.
+
 
 Licence
 +++++++

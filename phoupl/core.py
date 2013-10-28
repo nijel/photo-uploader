@@ -117,10 +117,12 @@ class PhotoUploader:
         '''
         # Cleanup buffer at start
         self._buffer.truncate(0)
+        self._buffer.seek(0)
         # Do the request
         self._curl.perform()
         # Debugging
         self.dump_request()
+        self._buffer.seek(0)
 
     def get(self, url):
         '''

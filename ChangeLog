@@ -4,6 +4,11 @@ ChangeLog for photo-uploader
 Major changes for each release are described here. Detailed changes between
 two versions can be retrieved from Git.
 
+0.11
+==== (2013-10-28)
+
+* Updated imageshack support.
+
 0.10
 ==== (2013-03-20)
 

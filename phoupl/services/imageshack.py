@@ -25,7 +25,7 @@ this program; if not, write to the Free Software Foundation, Inc.,
 import phoupl
 import pycurl
 import re
-
+import json
 
 MATCHER_TAG = re.compile(r'\[URL=([^]]*)\]\[IMG\]([^]]*)\[/IMG\]\[/URL\]')
 
@@ -48,10 +48,9 @@ class ImageShackService(phoupl.core.PhotoUploader):
                     ('key', 'SYKFZ21G9186be76287f58e42c6f5ef47b992697'),
                     ('cookie', self._config.get('imageshack.us', 'regcode')),
                 ])
-        data = self._buffer.getvalue()
-        m = MATCHER_TAG.search(data)
-        self._img_urls.append(m.group(2))
-        self._show_urls.append(m.group(1))
+        response = json.load(self._buffer)
+        self._img_urls.append(response["links"]["image_link"])
+        self._show_urls.append(response["links"]["is_link"])
 
     def _post_upload(self):
         self.msg('''

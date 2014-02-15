@@ -2,7 +2,7 @@
 ; Place this as ~/.photo-upload.
 [photo-upload]
 ; Default service
-service = droxi.cz
+service = postimage.org
 ; Whether to open browser
 open-browser = Yes
 ; Which browser to use

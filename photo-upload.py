@@ -32,7 +32,7 @@ import os
 CONFIGFILE = '~/.photo-upload'
 CONFIGDEFAULTS = {
         'photo-upload' : {
-            'service' : 'imageshack.us',
+            'service' : 'postimage.org',
             'open-browser' : False,
             'use-browser' : '',
             },

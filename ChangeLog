@@ -10,6 +10,8 @@ two versions can be retrieved from Git.
 * Drop support for no longer available services:
 	ILikePhoto, iTesco.cz, Fotostar, Droxi,
 	DM-paradies.
+* Add support for PostImage service (no auth)
+* Make PostImage the default.
 
 0.11
 ==== (2013-10-28)
